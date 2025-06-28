@@ -1,0 +1,124 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Art Connection</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #ff5e62;
+      --secondary: #ff9966;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; }
+    body { background: #fafafa; color: #333; line-height: 1.6; }
+    header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #fff; padding: 1.5rem 1rem; text-align: center; }
+    header h1 { font-family: 'Great Vibes', cursive; font-size: 3rem; margin-bottom: 0.25rem; }
+    .container { max-width: 1100px; margin: auto; padding: 1.5rem; }
+    form { background: #fff; border-radius: 1rem; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .field { margin-bottom: 1.25rem; }
+    label { display: block; font-weight: 600; margin-bottom: 0.5rem; }
+    input[type="text"], input[type="email"], input[type="tel"], select, textarea { width: 100%; padding: 0.75rem; border: 1px solid #ccc; border-radius: 0.5rem; }
+    textarea { resize: vertical; min-height: 120px; }
+    input[type="file"] { border: none; }
+    button { background: var(--primary); color: #fff; border: none; padding: 0.75rem 2rem; border-radius: 0.5rem; font-size: 1rem; cursor: pointer; transition: opacity 0.2s ease; }
+    button:hover { opacity: 0.85; }
+    .preview-container { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
+    .preview-img { width: 180px; height: 180px; object-fit: cover; border-radius: 0.75rem; box-shadow: 0 1px 5px rgba(0,0,0,0.15); }
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 1.5rem; margin-top: 3rem; }
+    .product-card { background: #fff; border-radius: 1rem; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.07); text-align: center; padding-bottom: 1rem; }
+    .product-card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
+    .product-card h3 { margin: 1rem 0 0.5rem; font-size: 1.1rem; font-weight: 600; }
+    .product-card p { font-size: 0.9rem; padding: 0 1rem; color: #666; }
+    footer { text-align: center; padding: 2rem 1rem; color: #999; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Art Connection</h1>
+    <p>Hand‑crafted gifts & custom artwork</p>
+  </header>  <div class="container">
+    <h2>Place Your Custom Order</h2>
+    <form id="orderForm">
+      <div class="field">
+        <label for="customerName">Your Name</label>
+        <input type="text" id="customerName" placeholder="Muskan Ansari" required>
+      </div>
+      <div class="field">
+        <label for="customerEmail">Email</label>
+        <input type="email" id="customerEmail" placeholder="you@example.com">
+      </div>
+      <div class="field">
+        <label for="customerPhone">Phone</label>
+        <input type="tel" id="customerPhone" placeholder="+91‑8080780483">
+      </div>
+      <div class="field">
+        <label for="productType">Select Product</label>
+        <select id="productType" required>
+          <option value="" disabled selected>Select one</option>
+          <option>Custom Portrait</option>
+          <option>Resin Keychain</option>
+          <option>Name Plate</option>
+          <option>Canvas Painting</option>
+          <option>Scrapbook</option>
+          <option>Resin Photo Frame</option>
+          <option>Miniature Art</option>
+          <option>Mandala Coaster Set</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="customText">Names / Message (optional)</label>
+        <textarea id="customText" placeholder="e.g. 'Happy Birthday, Aashi!'"></textarea>
+      </div>
+      <div class="field">
+        <label for="imageUpload">Upload Reference Image(s)</label>
+        <input type="file" id="imageUpload" accept="image/*" multiple>
+        <small>PNG / JPG up to 5 MB each</small>
+        <div id="preview" class="preview-container"></div>
+      </div>
+      <button type="submit">Send Order</button>
+    </form><!-- 📸 LOCAL SAMPLE GALLERY: Put images in SAME folder and rename below → product1.jpg, product2.jpg, product3.jpg  -->
+<section class="products-grid" id="gallery">
+  <div class="product-card">
+    <img src="product1.jpg" alt="Product 1">
+    <h3>Resin Photo Frame</h3>
+    <p>Personalised with dried flowers & glitter.</p>
+  </div>
+  <div class="product-card">
+    <img src="product2.jpg" alt="Product 2">
+    <h3>Couple Portrait</h3>
+    <p>Hand‑painted on 300 gsm canvas sheet.</p>
+  </div>
+  <div class="product-card">
+    <img src="product3.jpg" alt="Product 3">
+    <h3>Alphabet Keychain</h3>
+    <p>Choose any letter & colour combo.</p>
+  </div>
+</section>
+
+  </div>  <footer>
+    <p>©️ 2025 Art Connection • Made with love in India</p>
+  </footer>  <script>
+    // Image preview for uploads
+    document.getElementById('imageUpload').addEventListener('change', e => {
+      const preview = document.getElementById('preview');
+      preview.innerHTML = '';
+      [...e.target.files].forEach(file => {
+        if (!file.type.startsWith('image/')) return;
+        const url = URL.createObjectURL(file);
+        const img = new Image();
+        img.src = url;
+        img.className = 'preview-img';
+        img.onload = () => URL.revokeObjectURL(url);
+        preview.appendChild(img);
+      });
+    });
+
+    // Demo submit (replace with real backend later)
+    document.getElementById('orderForm').addEventListener('submit', e => {
+      e.preventDefault();
+      alert('Thanks! Your order details have been sent. We will contact you shortly.');
+      e.target.reset();
+      document.getElementById('preview').innerHTML = '';
+    });
+  </script></body>
+</html>
