@@ -1,124 +1,198 @@
-<!DOCTYPE html><html lang="en">
+!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Art Connection</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --primary: #ff5e62;
-      --secondary: #ff9966;
+    :root{
+      --primary:#ff6f61;
+      --dark:#222;
+      --light:#f9f9f9;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; }
-    body { background: #fafafa; color: #333; line-height: 1.6; }
-    header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #fff; padding: 1.5rem 1rem; text-align: center; }
-    header h1 { font-family: 'Great Vibes', cursive; font-size: 3rem; margin-bottom: 0.25rem; }
-    .container { max-width: 1100px; margin: auto; padding: 1.5rem; }
-    form { background: #fff; border-radius: 1rem; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-    .field { margin-bottom: 1.25rem; }
-    label { display: block; font-weight: 600; margin-bottom: 0.5rem; }
-    input[type="text"], input[type="email"], input[type="tel"], select, textarea { width: 100%; padding: 0.75rem; border: 1px solid #ccc; border-radius: 0.5rem; }
-    textarea { resize: vertical; min-height: 120px; }
-    input[type="file"] { border: none; }
-    button { background: var(--primary); color: #fff; border: none; padding: 0.75rem 2rem; border-radius: 0.5rem; font-size: 1rem; cursor: pointer; transition: opacity 0.2s ease; }
-    button:hover { opacity: 0.85; }
-    .preview-container { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
-    .preview-img { width: 180px; height: 180px; object-fit: cover; border-radius: 0.75rem; box-shadow: 0 1px 5px rgba(0,0,0,0.15); }
-    .products-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 1.5rem; margin-top: 3rem; }
-    .product-card { background: #fff; border-radius: 1rem; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.07); text-align: center; padding-bottom: 1rem; }
-    .product-card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
-    .product-card h3 { margin: 1rem 0 0.5rem; font-size: 1.1rem; font-weight: 600; }
-    .product-card p { font-size: 0.9rem; padding: 0 1rem; color: #666; }
-    footer { text-align: center; padding: 2rem 1rem; color: #999; font-size: 0.85rem; }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{
+      font-family:'Montserrat',sans-serif;
+      background:var(--light);
+      color:var(--dark);
+      line-height:1.6;
+    }
+    h1,h2,h3{
+      font-family:'Playfair Display',serif;
+    }/* Header */
+header{
+  background:var(--primary);
+  color:#fff;
+  padding:1rem 2rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+nav a{
+  color:#fff;
+  margin-left:1rem;
+  text-decoration:none;
+  font-weight:500;
+}
+nav a:hover{
+  text-decoration:underline;
+}
+
+/* Hero */
+.hero{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:4rem 2rem;
+  background:url('images/hero.jpg') center/cover no-repeat;
+  color:#fff;
+}
+.hero h1{
+  font-size:3rem;
+  margin-bottom:1rem;
+  text-shadow:2px 2px 4px rgba(0,0,0,.3);
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+}
+.btn{
+  display:inline-block;
+  background:#fff;
+  color:var(--primary);
+  padding:.75rem 1.5rem;
+  border-radius:25px;
+  font-weight:600;
+  transition:.3s;
+}
+.btn:hover{
+  background:#ffe8e5;
+}
+
+/* About */
+.about{
+  max-width:1000px;
+  margin:4rem auto;
+  padding:0 2rem;
+  text-align:center;
+}
+.about h2{
+  margin-bottom:1rem;
+  font-size:2rem;
+}
+.about p{
+  margin-bottom:1.5rem;
+}
+
+/* Gallery */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:1rem;
+  padding:0 2rem;
+  margin-bottom:4rem;
+}
+.gallery img{
+  width:100%;
+  height:300px;
+  object-fit:cover;
+  border-radius:12px;
+  box-shadow:0 4px 8px rgba(0,0,0,0.1);
+  transition:.3s;
+}
+.gallery img:hover{
+  transform:translateY(-3px);
+}
+
+/* Custom Order */
+.order-section{
+  background:#fff;
+  padding:3rem 2rem;
+}
+.order-section h2{
+  text-align:center;
+  margin-bottom:1rem;
+}
+form{
+  max-width:600px;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  gap:1rem;
+}
+input,textarea{
+  padding:.75rem 1rem;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:1rem;
+}
+input[type="file"]{
+  border:none;
+}
+input[type="submit"]{
+  background:var(--primary);
+  color:#fff;
+  border:none;
+  cursor:pointer;
+  font-weight:600;
+  transition:.3s;
+}
+input[type="submit"]:hover{
+  background:#e85b4b;
+}
+
+/* Footer */
+footer{
+  background:var(--dark);
+  color:#fff;
+  text-align:center;
+  padding:1rem 0;
+}
+footer a{
+  color:#ffb8b0;
+  text-decoration:none;
+}
+
   </style>
 </head>
-<body>
-  <header>
+<body>  <header>
     <h1>Art Connection</h1>
-    <p>Hand‑crafted gifts & custom artwork</p>
-  </header>  <div class="container">
-    <h2>Place Your Custom Order</h2>
-    <form id="orderForm">
-      <div class="field">
-        <label for="customerName">Your Name</label>
-        <input type="text" id="customerName" placeholder="Muskan Ansari" required>
-      </div>
-      <div class="field">
-        <label for="customerEmail">Email</label>
-        <input type="email" id="customerEmail" placeholder="you@example.com">
-      </div>
-      <div class="field">
-        <label for="customerPhone">Phone</label>
-        <input type="tel" id="customerPhone" placeholder="+91‑8080780483">
-      </div>
-      <div class="field">
-        <label for="productType">Select Product</label>
-        <select id="productType" required>
-          <option value="" disabled selected>Select one</option>
-          <option>Custom Portrait</option>
-          <option>Resin Keychain</option>
-          <option>Name Plate</option>
-          <option>Canvas Painting</option>
-          <option>Scrapbook</option>
-          <option>Resin Photo Frame</option>
-          <option>Miniature Art</option>
-          <option>Mandala Coaster Set</option>
-        </select>
-      </div>
-      <div class="field">
-        <label for="customText">Names / Message (optional)</label>
-        <textarea id="customText" placeholder="e.g. 'Happy Birthday, Aashi!'"></textarea>
-      </div>
-      <div class="field">
-        <label for="imageUpload">Upload Reference Image(s)</label>
-        <input type="file" id="imageUpload" accept="image/*" multiple>
-        <small>PNG / JPG up to 5 MB each</small>
-        <div id="preview" class="preview-container"></div>
-      </div>
-      <button type="submit">Send Order</button>
-    </form><!-- 📸 LOCAL SAMPLE GALLERY: Put images in SAME folder and rename below → product1.jpg, product2.jpg, product3.jpg  -->
-<section class="products-grid" id="gallery">
-  <div class="product-card">
-    <img src="product1.jpg" alt="Product 1">
-    <h3>Resin Photo Frame</h3>
-    <p>Personalised with dried flowers & glitter.</p>
-  </div>
-  <div class="product-card">
-    <img src="product2.jpg" alt="Product 2">
-    <h3>Couple Portrait</h3>
-    <p>Hand‑painted on 300 gsm canvas sheet.</p>
-  </div>
-  <div class="product-card">
-    <img src="product3.jpg" alt="Product 3">
-    <h3>Alphabet Keychain</h3>
-    <p>Choose any letter & colour combo.</p>
-  </div>
-</section>
-
-  </div>  <footer>
-    <p>©️ 2025 Art Connection • Made with love in India</p>
-  </footer>  <script>
-    // Image preview for uploads
-    document.getElementById('imageUpload').addEventListener('change', e => {
-      const preview = document.getElementById('preview');
-      preview.innerHTML = '';
-      [...e.target.files].forEach(file => {
-        if (!file.type.startsWith('image/')) return;
-        const url = URL.createObjectURL(file);
-        const img = new Image();
-        img.src = url;
-        img.className = 'preview-img';
-        img.onload = () => URL.revokeObjectURL(url);
-        preview.appendChild(img);
-      });
-    });
-
-    // Demo submit (replace with real backend later)
-    document.getElementById('orderForm').addEventListener('submit', e => {
-      e.preventDefault();
-      alert('Thanks! Your order details have been sent. We will contact you shortly.');
-      e.target.reset();
-      document.getElementById('preview').innerHTML = '';
-    });
-  </script></body>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#order">Custom Order</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>  <section class="hero">
+    <h1>Handmade Products & Custom Artwork</h1>
+    <p>Bringing your imagination to life with handcrafted pieces.</p>
+    <a href="#order" class="btn">Place Your Order</a>
+  </section>  <section id="about" class="about">
+    <h2>About Us</h2>
+    <p>At Art Connection, every product tells a story. We specialize in handmade gifts and bespoke artwork crafted with love and precision.</p>
+  </section>  <section id="gallery">
+    <h2 style="text-align:center; margin-bottom:1rem;">Product Gallery</h2>
+    <div class="gallery">
+      <img src="images/product1.jpg" alt="Handmade Product 1">
+      <img src="images/product2.jpg" alt="Handmade Product 2">
+      <img src="images/product3.jpg" alt="Handmade Product 3">
+      <img src="images/product4.jpg" alt="Handmade product 4">
+    </div>
+  </section>  <section id="order" class="order-section">
+    <h2>Customize Your Order</h2>
+    <form action="https://formspree.io/f/yourformid" method="POST" enctype="multipart/form-data">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="_replyto" placeholder="Your Email" required>
+      <textarea name="details" rows="4" placeholder="Describe your custom request" required></textarea>
+      <label>Upload reference image (optional)</label>
+      <input type="file" name="image">
+      <input type="submit" value="Submit">
+    </form>
+  </section>  <footer id="contact">
+    <p>Contact us at <a href="mailto:nazmeenk502@gmail.com">nazmeenk502@gmail.com</a> | Instagram: <a href="https://instagram.com/_art.connection_26" target="_blank">@_art.connection_26</a> | Phone: <a href="tel:8080780483">8080780483</a></p>
+    <p>&copy; 2025 Art Connection. All rights reserved.</p>
+  </footer></body>
 </html>
