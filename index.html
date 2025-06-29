@@ -1,198 +1,213 @@
-!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Art Connection</title>
+
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
-    :root{
-      --primary:#ff6f61;
-      --dark:#222;
-      --light:#f9f9f9;
+    :root {
+      --primary: #1abc9c;         /* Teal green */
+      --primary-dark: #117a65;    /* Deep green */
+      --bg: #eafaf1;              /* light mint */
+      --text-dark: #0b5345;
+      --radius: 16px;
     }
-    *{box-sizing:border-box;margin:0;padding:0;}
-    body{
-      font-family:'Montserrat',sans-serif;
-      background:var(--light);
-      color:var(--dark);
-      line-height:1.6;
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg);
+      line-height: 1.6;
     }
-    h1,h2,h3{
-      font-family:'Playfair Display',serif;
-    }/* Header */
-header{
-  background:var(--primary);
-  color:#fff;
-  padding:1rem 2rem;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-nav a{
-  color:#fff;
-  margin-left:1rem;
-  text-decoration:none;
-  font-weight:500;
-}
-nav a:hover{
-  text-decoration:underline;
-}
 
-/* Hero */
-.hero{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:4rem 2rem;
-  background:url('images/hero.jpg') center/cover no-repeat;
-  color:#fff;
-}
-.hero h1{
-  font-size:3rem;
-  margin-bottom:1rem;
-  text-shadow:2px 2px 4px rgba(0,0,0,.3);
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  font-weight: bold;
-}
-.btn{
-  display:inline-block;
-  background:#fff;
-  color:var(--primary);
-  padding:.75rem 1.5rem;
-  border-radius:25px;
-  font-weight:600;
-  transition:.3s;
-}
-.btn:hover{
-  background:#ffe8e5;
-}
+    /* Header */
+    header {
+      background: var(--primary);
+      padding: 25px 20px 15px;
+      text-align: center;
+      color: white;
+    }
 
-/* About */
-.about{
-  max-width:1000px;
-  margin:4rem auto;
-  padding:0 2rem;
-  text-align:center;
-}
-.about h2{
-  margin-bottom:1rem;
-  font-size:2rem;
-}
-.about p{
-  margin-bottom:1.5rem;
-}
+    header h1 {
+      margin: 0;
+      font-family: 'Lobster', cursive;
+      font-size: 52px;
+    }
 
-/* Gallery */
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:1rem;
-  padding:0 2rem;
-  margin-bottom:4rem;
-}
-.gallery img{
-  width:100%;
-  height:300px;
-  object-fit:cover;
-  border-radius:12px;
-  box-shadow:0 4px 8px rgba(0,0,0,0.1);
-  transition:.3s;
-}
-.gallery img:hover{
-  transform:translateY(-3px);
-}
+    .tagline {
+      margin-top: 10px;
+      font-size: 18px;
+      font-weight: 500;
+    }
 
-/* Custom Order */
-.order-section{
-  background:#fff;
-  padding:3rem 2rem;
-}
-.order-section h2{
-  text-align:center;
-  margin-bottom:1rem;
-}
-form{
-  max-width:600px;
-  margin:0 auto;
-  display:flex;
-  flex-direction:column;
-  gap:1rem;
-}
-input,textarea{
-  padding:.75rem 1rem;
-  border:1px solid #ccc;
-  border-radius:8px;
-  font-size:1rem;
-}
-input[type="file"]{
-  border:none;
-}
-input[type="submit"]{
-  background:var(--primary);
-  color:#fff;
-  border:none;
-  cursor:pointer;
-  font-weight:600;
-  transition:.3s;
-}
-input[type="submit"]:hover{
-  background:#e85b4b;
-}
+    /* Product Section */
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 30px 20px;
+    }
 
-/* Footer */
-footer{
-  background:var(--dark);
-  color:#fff;
-  text-align:center;
-  padding:1rem 0;
-}
-footer a{
-  color:#ffb8b0;
-  text-decoration:none;
-}
+    .product {
+      width: 250px;
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s;
+    }
 
+    .product:hover {
+      transform: scale(1.05);
+    }
+
+    .product img {
+      width: 100%;
+      display: block;
+      border-top-left-radius: var(--radius);
+      border-top-right-radius: var(--radius);
+    }
+
+    .product p {
+      margin: 0;
+      padding: 12px;
+      text-align: center;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    /* Form Section */
+    .order-section {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 25px;
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .order-section h2 {
+      text-align: center;
+      color: var(--primary-dark);
+      margin-top: 0;
+    }
+
+    .order-section label {
+      font-weight: 600;
+      display: block;
+      margin-top: 12px;
+      color: var(--text-dark);
+    }
+
+    .order-section input,
+    .order-section textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font: inherit;
+    }
+
+    .order-section button {
+      margin-top: 18px;
+      padding: 12px;
+      background: var(--primary-dark);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .order-section button:hover {
+      background: #0e6655;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--primary);
+      text-align: center;
+      padding: 14px 10px;
+      font-size: 15px;
+      color: white;
+    }
+
+    .footer-icons i {
+      margin: 0 6px;
+      font-size: 18px;
+      vertical-align: middle;
+    }
+
+    a {
+      color: #fefefe;
+      text-decoration: none;
+    }
   </style>
 </head>
-<body>  <header>
+<body>
+
+  <!-- Header -->
+  <header>
     <h1>Art Connection</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#order">Custom Order</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>  <section class="hero">
-    <h1>Handmade Products & Custom Artwork</h1>
-    <p>Bringing your imagination to life with handcrafted pieces.</p>
-    <a href="#order" class="btn">Place Your Order</a>
-  </section>  <section id="about" class="about">
-    <h2>About Us</h2>
-    <p>At Art Connection, every product tells a story. We specialize in handmade gifts and bespoke artwork crafted with love and precision.</p>
-  </section>  <section id="gallery">
-    <h2 style="text-align:center; margin-bottom:1rem;">Product Gallery</h2>
-    <div class="gallery">
-      <img src="images/product1.jpg" alt="Handmade Product 1">
-      <img src="images/product2.jpg" alt="Handmade Product 2">
-      <img src="images/product3.jpg" alt="Handmade Product 3">
-      <img src="images/product4.jpg" alt="Handmade product 4">
+    <p class="tagline">Handmade Products • Customized Gifts • Crafted With Love</p>
+  </header>
+
+  <!-- Products -->
+  <div class="products">
+    <div class="product">
+      <img src="product1.jpg" alt="Product 1">
+      <p>Handmade Gift 1</p>
     </div>
-  </section>  <section id="order" class="order-section">
-    <h2>Customize Your Order</h2>
-    <form action="https://formspree.io/f/yourformid" method="POST" enctype="multipart/form-data">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="_replyto" placeholder="Your Email" required>
-      <textarea name="details" rows="4" placeholder="Describe your custom request" required></textarea>
-      <label>Upload reference image (optional)</label>
-      <input type="file" name="image">
-      <input type="submit" value="Submit">
+    <div class="product">
+      <img src="product2.jpg" alt="Product 2">
+      <p>Handmade Gift 2</p>
+    </div>
+    <div class="product">
+      <img src="product3.jpg" alt="Product 3">
+      <p>Customized Art</p>
+    </div>
+    <div class="product">
+      <img src="product4.jpg" alt="Paper Bouquet">
+      <p>Paper Bouquet</p>
+    </div>
+  </div>
+
+  <!-- Order Form -->
+  <section class="order-section">
+    <h2>Place a Custom Order</h2>
+    <form action="#" method="POST" enctype="multipart/form-data">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="details">What would you like to customize?</label>
+      <textarea id="details" name="details" rows="4" required></textarea>
+
+      <label for="image">Upload a reference image (optional)</label>
+      <input type="file" id="image" name="image" accept="image/*">
+
+      <button type="submit">Submit Order</button>
     </form>
-  </section>  <footer id="contact">
-    <p>Contact us at <a href="mailto:nazmeenk502@gmail.com">nazmeenk502@gmail.com</a> | Instagram: <a href="https://instagram.com/_art.connection_26" target="_blank">@_art.connection_26</a> | Phone: <a href="tel:8080780483">8080780483</a></p>
-    <p>&copy; 2025 Art Connection. All rights reserved.</p>
-  </footer></body>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-icons">
+      <i class="fas fa-envelope"></i>
+      <a href="mailto:nazmeenk502@gmail.com">nazmeenk502@gmail.com</a> |
+      <i class="fas fa-phone"></i> 8080780483 |
+      <i class="fab fa-instagram"></i>
+      <a href="https://www.instagram.com/_art.connection_26" target="_blank">@_art.connection_26</a>
+    </div>
+  </footer>
+
+</body>
 </html>
